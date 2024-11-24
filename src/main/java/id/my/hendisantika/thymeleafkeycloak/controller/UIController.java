@@ -32,4 +32,9 @@ public class UIController {
         model.addAttribute("isNice", auth != null && auth.getAuthorities().stream().anyMatch(authority -> Objects.equals("NICE", authority.getAuthority())));
         return "index.html";
     }
+
+    @GetMapping("/nice")
+    public String getNice(Model model, Authentication auth) {
+        return "nice.html";
+    }
 }
