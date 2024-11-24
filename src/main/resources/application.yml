@@ -1,0 +1,42 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: spring-boot-thymeleaf-keycloak
+
+  security:
+    oauth2:
+      client:
+        provider:
+          PowerRanger:
+            issuer-uri: http://localhost:7080/realms/PowerRanger
+        registration:
+          keycloak:
+            provider: PowerRanger
+            authorization-grant-type: authorization_code
+            client-id: spring-boot-thymeleaf-keycloak
+            client-secret: secret
+            scope: openid
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+        boot: INFO
+
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
