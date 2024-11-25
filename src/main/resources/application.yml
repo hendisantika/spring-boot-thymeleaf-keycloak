@@ -4,19 +4,21 @@ server:
 spring:
   application:
     name: spring-boot-thymeleaf-keycloak
-
+  docker:
+    compose:
+      enable: true
   security:
     oauth2:
       client:
         provider:
-          PowerRanger:
-            issuer-uri: http://localhost:7080/realms/PowerRanger
+          Greylian:
+            issuer-uri: http://localhost:7080/realms/Greylian
         registration:
           keycloak:
-            provider: PowerRanger
+            provider: Greylian
             authorization-grant-type: authorization_code
             client-id: spring-boot-thymeleaf-keycloak
-            client-secret: secret
+            client-secret: 5Lzi66sHd4YZnRQ03d2iCxsxyZG71FAz
             scope: openid
 
 logging:
