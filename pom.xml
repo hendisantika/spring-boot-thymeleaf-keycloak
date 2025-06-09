@@ -69,7 +69,7 @@
         <dependency>
             <groupId>com.c4-soft.springaddons</groupId>
             <artifactId>spring-addons-oauth2-test</artifactId>
-            <version>8.1.14</version>
+            <version>8.1.15</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
