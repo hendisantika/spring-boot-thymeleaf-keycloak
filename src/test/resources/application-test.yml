@@ -1,0 +1,21 @@
+# Test profile: avoid OIDC discovery against a running Keycloak instance.
+# The registration is pointed at a provider with explicit endpoints so the
+# ClientRegistrationRepository can be built without any network call.
+spring:
+  docker:
+    compose:
+      enabled: false
+  security:
+    oauth2:
+      client:
+        provider:
+          Greylian-test:
+            authorization-uri: http://localhost:7080/realms/Greylian/protocol/openid-connect/auth
+            token-uri: http://localhost:7080/realms/Greylian/protocol/openid-connect/token
+            jwk-set-uri: http://localhost:7080/realms/Greylian/protocol/openid-connect/certs
+            user-info-uri: http://localhost:7080/realms/Greylian/protocol/openid-connect/userinfo
+            user-name-attribute: preferred_username
+        registration:
+          keycloak:
+            provider: Greylian-test
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
